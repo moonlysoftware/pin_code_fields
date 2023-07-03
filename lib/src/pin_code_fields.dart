@@ -549,6 +549,24 @@ class _PinCodeTextFieldState extends State<PinCodeTextField>
     return relevantInActiveColor;
   }
 
+    // selects the right text color for the field
+  Color _getTextColorFromIndex(int index) {
+    switch (index) {
+      case 0:
+        return Color(0xFF3A5262);
+      case 1:
+        return Color(0xFF586880);
+      case 2:
+        return Color(0xFF757E9D);
+      case 3:
+        return Color(0xFF9193B9);
+      case 4:
+        return Color(0xFFAEA9D6);
+      default:
+        return Color(0xFF3A5262);
+    }
+  }
+
   double _getBorderWidthForIndex(int index) {
     if (!widget.enabled) {
       return _pinTheme.disabledBorderWidth;
@@ -620,7 +638,7 @@ class _PinCodeTextFieldState extends State<PinCodeTextField>
         : Text(
             text,
             key: ValueKey(_inputList[index]),
-            style: _textStyle,
+             style: _textStyle.copyWith(color: _getTextColorFromIndex(index),),
           );
   }
 
